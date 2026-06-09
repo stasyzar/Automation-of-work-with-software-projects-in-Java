@@ -35,6 +35,9 @@ public class DtoProcessor extends AbstractProcessor {
 
                 for (Element enclosed : classElement.getEnclosedElements()) {
                     if (enclosed.getKind() == ElementKind.FIELD) {
+                        if (enclosed.getAnnotation(ExcludeFromDto.class) != null) {
+                            continue;
+                        }
                         writer.write("    @NotNull\n");
                         writer.write("    public " + enclosed.asType().toString() + " " + enclosed.getSimpleName() + ";\n\n");
                     }

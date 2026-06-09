@@ -6,4 +6,7 @@ import ua.edu.ukma.GenerateDto;
 public class Car {
     public String brand;
     public String model;
+
+    @ExcludeFromDto
+    public String vinCode;
 }
