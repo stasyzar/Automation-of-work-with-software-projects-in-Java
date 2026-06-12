@@ -42,3 +42,13 @@ jobs:
           name: app-release-jar
           path: practice6/build/libs/*.jar
           retention-days: 7
+
+      - name: Step 5 - Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "Release v1.0.${{ github.run_number }}"
+          files: practice6/build/libs/*.jar
+          body: "Автоматично зібрана версія проєкту. Завантажте .jar файл нижче."
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
